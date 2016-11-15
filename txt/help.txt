@@ -1,1 +1,82 @@
-<h1>Help</h1>
+<h1>MiST Help Pages</h1>
+<ul>
+  <li><a href="#input">Input Fields</a></li>
+  <li><a href="#output">Output</a></li>
+</ul>
+
+<a name="input"><h4>Input Fields</h4></a>
+<ul>
+  <li><a id="email"><h5>Email</h5></a>
+      <p>If set, a notification will be sent once the job is completed.
+      </p></li>
+  <li><a id="input_file"><h5>Input table</h5></a>
+      <p>Upload input interaction table. Here is an example of it:
+      </p></li>
+
+      <table border="5">
+         <tr>
+         <th>#</th> <th>#</th> <th>#</th> <th>Exps</th> <th>A1</th> <th>A2</th> <th>B1</th> <th>B2</th> <th>C1</th> <th>C2</th>
+         </tr>
+	 <tr>
+         <th>#</th> <th>#</th> <th>#</th> <th>Baits</th> <th>A</th> <th>A</th> <th>B</th> <th>B</th> <th>C</th> <th>C</th>
+         </tr>
+	 <tr>
+         <th>Prey</th> <th>#</th> <th>Length</th> <th>BaitSims</th> <th>A</th> <th>A</th> <th>B|C</th> <th>B|C</th> <th>B|C</th> <th>B|C</th>
+         </tr>
+         <tr>
+         <th>Protein1</th> <th>#</th> <th>188</th> <th>#</th> <td>12</td> <td>4</td> <td>12</td> <td>4</td> <td>7</td> <td>24</td>
+         </tr>
+         <tr>
+         <th>Protein2</th> <th>#</th> <th>157</th> <th>#</th> <td>0</td> <td>0</td> <td>0</td> <td>1</td> <td>0</td> <td>2</td>
+         </tr>
+ 	 <tr>
+         <th>Protein3</th> <th>#</th> <th>723</th> <th>#</th> <td>9</td> <td>21</td> <td>18</td> <td>57</td> <td>24</td> <td>0</td>
+         </tr>
+	 <tr>
+         <th>Protein4</th> <th>#</th> <th>186</th> <th>#</th> <td>0</td> <td>6</td> <td>7</td> <td>1</td> <td>15</td> <td>21</td>
+         </tr>
+	 <tr>
+         <th>Protein5</th> <th>#</th> <th>988</th> <th>#</th> <td>0</td> <td>0</td> <td>0</td> <td>12</td> <td>0</td> <td>0</td>
+         </tr>
+      </table><br /> 
+      <p>In this illustrative example, 3 baits were used and pull-down with each of them repeated twice. Five preys were detected total.
+         The table is in the format that is compatible with <a href="http://saint-apms.sourceforge.net/Main.html">SAInt</a>, another 
+         scoring developed by <a href="http://www.nesvilab.org/">Nesvizhskii lab</a>.  
+	 <br /><b>First row</b> lists all pull-downs (first four fields are not read in by MiST).
+	 <br /><b>Second row</b> lists all baits (again, first four fields are not read in by MiST).
+	 <br /><b>Third row</b> lists bait similarities. In general, MiST calculates specificity for a given bait-prey pair by looking at the abundance
+         of the same prey detected by other baits. Usually, this row can be just a copy of the second row. Sometimes, two (or more) baits are expected 
+ 	 to bind similar preys, and one would want to exclude specificity calculation between them (for example, baits that are involved in the same 
+	 cellular process, are mutants, or truncated versions). Here, bait B and C bind similar preys. To exclude specificity calculation between 
+	 them, we simply list all such baits separated by '|' (no white-spaces). In case of expectedly uniq binding, one needs to list the bait itself 
+	 (like A in this example). Again, first four fields are not read in by MiST.
+	 <br /><b>First column</b> lists all preys.
+	 <br /><b>Second column</b> is not read by MiST.
+	 <br /><b>First column</b> lists all preys' lengths (in residue units).
+	 <br /><b>Fourth column</b> is also not read by MiST.
+	 <br /><b>All other fields</b> contain any kind of information about biat-prey pair quantity (spectral counts, number of uniqe peptides, intensities, etc.)
+	 The quantities are normalized by MiST, so there is no need for doing so. If particular prey was not detected in an experiment, you need to set its 	  quantity to zero.
+      </p>
+     
+
+  <li><a id="running_mode"><h5>Select MiST running mode</h5></a>
+      <p>We recommend usage of MiST trained on HIV dataset (HIV trained mode). However, we encourage you to also try 
+	 PCA training mode. PCA will re-learn weigths in the composite sum of abundance, reproducibility,and specificity metrics according to your data.
+      </p></li>
+  <li><a id="filtering_mode"><h5>Select singleton filtering</h5></a>
+      <p>We define singletons as preys that were detected once and only once in the entire experiment regardless of the number of 
+         replicas and baits used. If filtering of singletons is selected, their specificity score will be set to zero troughout
+ 	 MiST calculation.
+      </p></li>
+</ul>
+<a name="output"><h4>Output</h4></a>
+<p>
+       There are four fields for each bait-prey pair in the output:
+       <li><b>Abundance:</b> a normalized metric for a bait-prey pair quantity (an average across all replicas pull-downs).</li>
+       <li><b>Reproducibilty:</b> a metric to describe invariability of bait-prey pair quantities across replicas pull-downs.</li>
+       <li><b>Specificity:</b> a metric that measures the uniqueness of the observed prey to the assessed bait-prey pair relative to other bait-prey pairs.
+       <li><b>MiST score:</b> the final score (it is the weighted sum of all three metrics above).</li>
+       </ br> All four scores range from 0 to 1, 1 meaning the best possible scenario.
+	
+</p>
+
