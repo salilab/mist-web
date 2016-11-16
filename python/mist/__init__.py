@@ -93,7 +93,7 @@ class Job(saliweb.backend.Job):
 
         Checker = InputFileCheck()
         inputStatus,errorMessage = Checker.fileCheck(inputFile)
-        if inputStatus == True:
+        if inputStatus:
             # input file is OK
             self.logger.info("Input file is OK.")
 
@@ -117,7 +117,7 @@ sleep 17
 
             return r
 
-        elif inputStatus == False:
+        else:
             # input file is NOT OK
             self.logger.info("Input File not OK: %s" % errorMessage)
             return saliweb.backend.DoNothingRunner()
