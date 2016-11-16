@@ -86,7 +86,7 @@ GREETING
 
 	       $q->Tr($q->td({-colspan=>2}, $greeting)) .
 
-	       $q->Tr($q->td("Email address (required)",
+	       $q->Tr($q->td("Email address (optional)",
                       $self->help_link("input_file"), $q->br),
 	              $q->td($q->textfield({-name=>"email",
                                             -value=>$self->email,
