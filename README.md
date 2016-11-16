@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/salilab/mist-web.svg?branch=master)](https://travis-ci.org/salilab/mist-web)
 [![codecov](https://codecov.io/gh/salilab/mist-web/branch/master/graph/badge.svg)](https://codecov.io/gh/salilab/mist-web)
+[![Code Climate](https://codeclimate.com/github/salilab/mist-web/badges/gpa.svg)](https://codeclimate.com/github/salilab/mist-web)
 
 This is the source code for [MiST](https://salilab.org/mist/), a web
 service for scoring of affinity purification-mass spectrometry data.
