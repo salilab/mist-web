@@ -141,8 +141,6 @@ sub get_submit_page {
     my $input_param = $directory . "/param.txt";
     open(INPARAM, "> $input_param")
        or throw saliweb::frontend::InternalError("Cannot open $input_param: $!");
-    print INPARAM "$user_name\n";
-    print INPARAM "$email\n";
     print INPARAM "$runningMode\n";
     print INPARAM "$filteringMode\n";
 

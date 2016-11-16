@@ -97,7 +97,7 @@ class Job(saliweb.backend.Job):
                     # input file is OK
                     self.logger.info("Input file is OK.")
 
-		    jobName, email, trainingMode, filteringMode = [i.strip() for i in paramsFile.readlines()]
+		    trainingMode, filteringMode = [i.strip() for i in paramsFile.readlines()]
 		    trainingM  = 0
 		    filteringM = 0
 		    if trainingMode == 'training': trainingM = 1

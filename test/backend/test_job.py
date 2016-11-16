@@ -12,7 +12,7 @@ class JobTests(saliweb.test.TestCase):
         j = self.make_test_job(mist.Job, 'RUNNING')
         d = saliweb.test.RunInDir(j.directory)
         with open('param.txt', 'w') as fh:
-            fh.write('csv\ntest@test.com\ntraining\nno_filtering\n')
+            fh.write('training\nno_filtering\n')
         with open('input.txt', 'w') as fh:
             fh.write('SAV_STRAV;;2378;;3782;3990;2294;842;2739;1533;2938;1806;1686\n')
         cls = j._run_in_job_directory(j.run)
