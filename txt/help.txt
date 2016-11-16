@@ -48,32 +48,32 @@
          of the same prey detected by other baits. Usually, this row can be just a copy of the second row. Sometimes, two (or more) baits are expected 
  	 to bind similar preys, and one would want to exclude specificity calculation between them (for example, baits that are involved in the same 
 	 cellular process, are mutants, or truncated versions). Here, bait B and C bind similar preys. To exclude specificity calculation between 
-	 them, we simply list all such baits separated by '|' (no white-spaces). In case of expectedly uniq binding, one needs to list the bait itself 
-	 (like A in this example). Again, first four fields are not read in by MiST.
+	 them, we simply list all such baits separated by '|' (no white-spaces). In case of expectedly unique binding, one needs to list the bait itself 
+	 (like A in this example). Again, the first four fields are not read in by MiST.
 	 <br /><b>First column</b> lists all preys.
 	 <br /><b>Second column</b> is not read by MiST.
-	 <br /><b>First column</b> lists all preys' lengths (in residue units).
+	 <br /><b>Third column</b> lists all preys' lengths (in residue units).
 	 <br /><b>Fourth column</b> is also not read by MiST.
-	 <br /><b>All other fields</b> contain any kind of information about biat-prey pair quantity (spectral counts, number of uniqe peptides, intensities, etc.)
+	 <br /><b>All other fields</b> contain any kind of information about bait-prey pair quantity (spectral counts, number of unique peptides, intensities, etc.)
 	 The quantities are normalized by MiST, so there is no need for doing so. If particular prey was not detected in an experiment, you need to set its 	  quantity to zero.
       </p>
      
 
   <li><a id="running_mode"><h5>Select MiST running mode</h5></a>
       <p>We recommend usage of MiST trained on HIV dataset (HIV trained mode). However, we encourage you to also try 
-	 PCA training mode. PCA will re-learn weigths in the composite sum of abundance, reproducibility,and specificity metrics according to your data.
+	 PCA training mode. PCA will re-learn weights in the composite sum of abundance, reproducibility, and specificity metrics according to your data.
       </p></li>
   <li><a id="filtering_mode"><h5>Select singleton filtering</h5></a>
       <p>We define singletons as preys that were detected once and only once in the entire experiment regardless of the number of 
-         replicas and baits used. If filtering of singletons is selected, their specificity score will be set to zero troughout
+         replicas and baits used. If filtering of singletons is selected, their specificity score will be set to zero throughout the
  	 MiST calculation.
       </p></li>
 </ul>
 <a name="output"><h4>Output</h4></a>
 <p>
        There are four fields for each bait-prey pair in the output:
-       <li><b>Abundance:</b> a normalized metric for a bait-prey pair quantity (an average across all replicas pull-downs).</li>
-       <li><b>Reproducibilty:</b> a metric to describe invariability of bait-prey pair quantities across replicas pull-downs.</li>
+       <li><b>Abundance:</b> a normalized metric for a bait-prey pair quantity (an average across all replica pull-downs).</li>
+       <li><b>Reproducibilty:</b> a metric to describe invariability of bait-prey pair quantities across replica pull-downs.</li>
        <li><b>Specificity:</b> a metric that measures the uniqueness of the observed prey to the assessed bait-prey pair relative to other bait-prey pairs.
        <li><b>MiST score:</b> the final score (it is the weighted sum of all three metrics above).</li>
        </ br> All four scores range from 0 to 1, 1 meaning the best possible scenario.
