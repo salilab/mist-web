@@ -60,7 +60,7 @@ sub get_index_page {
 
     my $greeting = <<GREETING;
 <p>MiST is a computational tool for scoring of affinity purification-mass spectrometry data.
-<br><br>
+<br /><br />
 <b>Note:</b> We have also developed a stand-alone version of MiST in R, hosted <a href="https://github.com/kroganlab/mist">here</a> and described <a href="http://www.currentprotocols.com/WileyCDA/CPUnit/refId-bi0819.html">here</a>.
 <br />&nbsp;</p>
 GREETING
@@ -87,26 +87,26 @@ GREETING
 	       $q->Tr($q->td({-colspan=>2}, $greeting)) .
 
 	       $q->Tr($q->td("Email address (optional)",
-                      $self->help_link("input_file"), $q->br),
+                      $self->help_link("email"), $q->br),
 	              $q->td($q->textfield({-name=>"email",
                                             -value=>$self->email,
                                             -size=>"25"}))) .
 
 	       $q->Tr($q->td($q->h3("Upload input file",
-		      $self->help_link("input_file"), $q->br),
-                      $q->td($q->filefield({-name=>"input_file"})))) .
+		      $self->help_link("input_file"), $q->br)),
+                      $q->td($q->filefield({-name=>"input_file"}))) .
 
-               $q->Tr($q->td("Name your job",
+               $q->Tr($q->td("Name your job"),
                       $q->td($q->textfield({-name=>"name",
-                                            -value=>"job42", -size=>"9"})))) .
+                                            -value=>"job42", -size=>"9"}))) .
 
 	       $q->Tr($q->td("Select MiST Running Mode",
-		      $self->help_link("running_mode"),
-		      $q->td($q->radio_group("running_mode", $runningModeValues, "training", 0, $runningModeLabels)))) . 
+		      $self->help_link("running_mode")),
+		      $q->td($q->radio_group("running_mode", $runningModeValues, "training", 0, $runningModeLabels))) . 
 
 	       $q->Tr($q->td("Select Singleton Filtering",
-                      $self->help_link("filtering_mode"),
-                      $q->td($q->radio_group("filtering_mode", $filteringModeValues, "no_filtering", 0, $filteringModeLabels)))) .
+                      $self->help_link("filtering_mode")),
+                      $q->td($q->radio_group("filtering_mode", $filteringModeValues, "no_filtering", 0, $filteringModeLabels))) .
 
 
                $q->Tr($q->td({-colspan=>"2"}, "<center>" .

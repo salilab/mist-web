@@ -4,15 +4,15 @@
   <li><a href="#output">Output</a></li>
 </ul>
 
-<a name="input"><h4>Input Fields</h4></a>
+<h4><a id="input">Input Fields</a></h4>
 <ul>
-  <li><a id="email"><h5>Email</h5></a>
+  <li><h5><a id="email">Email</a></h5>
       <p>If set, a notification will be sent once the job is completed.
       </p></li>
-  <li><a id="input_file"><h5>Input table</h5></a>
+  <li><h5><a id="input_file">Input table</a></h5>
       <p>Upload input interaction table, in tab-separated value format.
 Here is an example of it:
-      </p></li>
+      </p>
 
       <table border="5">
          <tr>
@@ -58,26 +58,26 @@ Here is an example of it:
 	 <br /><b>All other fields</b> contain any kind of information about bait-prey pair quantity (spectral counts, number of unique peptides, intensities, etc.)
 	 The quantities are normalized by MiST, so there is no need for doing so. If particular prey was not detected in an experiment, you need to set its 	  quantity to zero.
       </p>
+  </li>
      
 
-  <li><a id="running_mode"><h5>Select MiST running mode</h5></a>
+  <li><h5><a id="running_mode">Select MiST running mode</a></h5>
       <p>We recommend usage of MiST trained on HIV dataset (HIV trained mode). However, we encourage you to also try 
 	 PCA training mode. PCA will re-learn weights in the composite sum of abundance, reproducibility, and specificity metrics according to your data.
       </p></li>
-  <li><a id="filtering_mode"><h5>Select singleton filtering</h5></a>
+  <li><h5><a id="filtering_mode">Select singleton filtering</a></h5>
       <p>We define singletons as preys that were detected once and only once in the entire experiment regardless of the number of 
          replicas and baits used. If filtering of singletons is selected, their specificity score will be set to zero throughout the
  	 MiST calculation.
       </p></li>
 </ul>
-<a name="output"><h4>Output</h4></a>
+<h4><a id="output">Output</a></h4>
 <p>
-       There are four fields for each bait-prey pair in the output:
-       <li><b>Abundance:</b> a normalized metric for a bait-prey pair quantity (an average across all replica pull-downs).</li>
-       <li><b>Reproducibilty:</b> a metric to describe invariability of bait-prey pair quantities across replica pull-downs.</li>
-       <li><b>Specificity:</b> a metric that measures the uniqueness of the observed prey to the assessed bait-prey pair relative to other bait-prey pairs.
-       <li><b>MiST score:</b> the final score (it is the weighted sum of all three metrics above).</li>
-       </ br> All four scores range from 0 to 1, 1 meaning the best possible scenario.
-	
-</p>
-
+       There are four fields for each bait-prey pair in the output:</p>
+       <dl>
+       <dt>Abundance</dt><dd>a normalized metric for a bait-prey pair quantity (an average across all replica pull-downs).</dd>
+       <dt>Reproducibilty</dt><dd>a metric to describe invariability of bait-prey pair quantities across replica pull-downs.</dd>
+       <dt>Specificity</dt><dd>a metric that measures the uniqueness of the observed prey to the assessed bait-prey pair relative to other bait-prey pairs.</dd>
+       <dt>MiST score</dt><dd>the final score (it is the weighted sum of all three metrics above).</dd>
+       </dl>
+       <p> All four scores range from 0 to 1, 1 meaning the best possible scenario.</p>
