@@ -10,7 +10,8 @@
       <p>If set, a notification will be sent once the job is completed.
       </p></li>
   <li><a id="input_file"><h5>Input table</h5></a>
-      <p>Upload input interaction table. Here is an example of it:
+      <p>Upload input interaction table, in tab-separated value format.
+Here is an example of it:
       </p></li>
 
       <table border="5">
