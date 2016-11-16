@@ -12,3 +12,9 @@ See [S. Jäger, P. Cimermancic et al., Nature, (2011) 481, 365-70](https://www.n
 First, install and set up the
 [Sali lab web framework](https://github.com/salilab/saliweb/) and the
 base [MiST algorithm](https://github.com/salilab/mist/).
+
+The web service expects to find a `mist` [module](http://modules.sourceforge.net/),
+i.e. it runs `module load mist`. This module should put the `MiST.py` script
+in the system PATH. This location must be on a network filesystem that is
+visible to all nodes in the compute cluster.
+
