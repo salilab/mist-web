@@ -120,15 +120,7 @@ sleep 17
         elif inputStatus == False:
             # input file is NOT OK
             self.logger.info("Input File not OK: %s" % errorMessage)
-
-            script = '''python -c "print 1"'''
-
-            r = self.runnercls(script)
-            r.set_sge_options('-l o64=true -l diva1=1G')
-
-            return r
-
-
+            return saliweb.backend.DoNothingRunner()
 
     def postprocess(self):
         """Combine the three files"""
