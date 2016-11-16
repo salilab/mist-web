@@ -105,7 +105,8 @@ class Job(saliweb.backend.Job):
 		    paramsFile.close()
 
 		    script = """
-python /netapp/sali/mist/MiST.py %s output %i %i
+module load mist
+MiST.py %s output %i %i
 
 sleep 17
 
