@@ -13,9 +13,8 @@ class InputFileCheck:
 
     def fileCheck(self,fileName):
         """Check if input file is OK"""
-        data = open(fileName,'rU')
-        Lines = [i.strip().split('\t') for i in data.readlines()]
-        data.close()
+        with open(fileName,'rU') as data:
+            Lines = [i.strip().split('\t') for i in data.readlines()]
 
 
         # --- check lenghts
