@@ -9,16 +9,6 @@ import logging
 
 
 
-class MyInputError(Exception):
-    """Exception raised if something was wrong with the input file."""
-    def __init__(self, msg):
-        self.keyword = "input_error"
-        self.msg = msg
-    #def __str__(self):
-    #    return repr(self.msg)
-    pass
-
-
 class InputFileCheck:
 
     def fileCheck(self,fileName):
