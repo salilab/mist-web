@@ -17,7 +17,7 @@ class InputFileCheck:
             Lines = [i.strip().split('\t') for i in data.readlines()]
 
 
-        # --- check lenghts
+        # --- check lengths
         Checker = True
         ErrorMessage = "\n"
         Lengths = [len(i) for i in Lines]
