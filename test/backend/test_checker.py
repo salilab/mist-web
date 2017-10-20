@@ -55,6 +55,7 @@ Protein1\t#\t188\t#\t12\t4\t27
 Prey\t#\tLength\tBaitSims\tA\tA\tB|C
 Protein1\t#\t188\t#\t12\t4\t27
 Protein1\t#\t188\t#\t12\t4\t27
+Protein2\t#\t188\t#\t12\t4\t27
 """)
         check, msg = mist.InputFileCheck().fileCheck(fname)
         self.assertFalse(check)
