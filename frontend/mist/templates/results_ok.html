@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}MiST Results{% endblock %}
+
+{% block body %}
+<p>Job '<b>{{ job.name }}</b>' has completed.</p>
+
+<p>Download <a href="{{ job.get_results_file_url('MistOutput.txt') }}">MiST output</a>.</p>
+
+{{ job.get_results_available_time() }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}MiST{% endblock %}
+
+{% block body %}
+<h2 align="center">MiST: Mass Spectrometry interaction STatistics</h2>
+
+<form method="post" action="{{ url_for("job") }}" enctype="multipart/form-data" name="mist_form">
+
+  <table>
+    <tr>
+      <td colspan="2"><p>MiST is a computational tool for scoring of affinity purification-mass spectrometry data.<br /><br />
+
+      <b>Note:</b> We have also developed a stand-alone version of MiST in R, hosted <a href="https://github.com/kroganlab/mist">here</a> and described <a href="http://www.currentprotocols.com/WileyCDA/CPUnit/refId-bi0819.html">here</a>.
+<br />&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td>Email address (optional) {{ help_link("email") }}</td>
+      <td><input type="text" name="email" value="{{ g.user.email }}" size="25" /></td>
+    </tr>
+    <tr>
+      <td><h3>Upload input file {{ help_link("input_file") }}</h3></td>
+      <td><input type="file" name="input_file" /></td>
+    </tr>
+    <tr>
+      <td>Name your job</td> <td><input type="text" name="name" value="job42" size="9" /></td>
+    </tr>
+    <tr>
+      <td>Select MiST Running Mode {{ help_link("running_mode") }}</td>
+      <td>
+        <label><input type="radio" name="running_mode" value="training" checked="checked" />PCA Training Mode</label>
+        <label><input type="radio" name="running_mode" value="trained" />HIV Trained Mode</label>
+      </td>
+    </tr>
+    <tr>
+      <td>Select Singleton Filtering {{ help_link("filtering_mode") }}</td>
+      <td>
+        <label><input type="radio" name="filtering_mode" value="filtering" />Yes</label>
+        <label><input type="radio" name="filtering_mode" value="no_filtering" checked="checked" />No</label>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><center>
+        <input type="submit" value="Process" />
+        <input type="reset" value="Reset" />
+      </center><p>&nbsp;</p></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
