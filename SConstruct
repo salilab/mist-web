@@ -5,11 +5,8 @@ env = saliweb.build.Environment(vars, ['conf/live.conf'], service_module='mist')
 Help(vars.GenerateHelpText(env))
 
 env.InstallAdminTools()
-env.InstallCGIScripts()
 
 Export('env')
 SConscript('backend/mist/SConscript')
 SConscript('frontend/mist/SConscript')
-SConscript('lib/SConscript')
-SConscript('txt/SConscript')
 SConscript('test/SConscript')
