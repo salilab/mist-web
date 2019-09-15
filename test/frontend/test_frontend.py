@@ -12,26 +12,26 @@ class Tests(saliweb.test.TestCase):
         """Test index page"""
         c = mist.app.test_client()
         rv = c.get('/')
-        self.assertIn('MiST is a computational tool for scoring', rv.data)
-        self.assertIn('S. Jaeger, P. Cimermancic, et al.', rv.data)
+        self.assertIn(b'MiST is a computational tool for scoring', rv.data)
+        self.assertIn(b'S. Jaeger, P. Cimermancic, et al.', rv.data)
 
     def test_contact(self):
         """Test contact page"""
         c = mist.app.test_client()
         rv = c.get('/contact')
-        self.assertIn('Please address inquiries to', rv.data)
+        self.assertIn(b'Please address inquiries to', rv.data)
 
     def test_help(self):
         """Test help page"""
         c = mist.app.test_client()
         rv = c.get('/help')
-        self.assertIn('Upload input interaction table', rv.data)
+        self.assertIn(b'Upload input interaction table', rv.data)
 
     def test_queue(self):
         """Test queue page"""
         c = mist.app.test_client()
         rv = c.get('/job')
-        self.assertIn('No pending or running jobs', rv.data)
+        self.assertIn(b'No pending or running jobs', rv.data)
 
 
 if __name__ == '__main__':

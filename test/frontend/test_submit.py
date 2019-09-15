@@ -18,45 +18,46 @@ class Tests(saliweb.test.TestCase):
         c = mist.app.test_client()
         rv = c.post('/job')
         self.assertEqual(rv.status_code, 400)  # no input table
-        self.assertIn('Please upload input table', rv.data)
+        self.assertIn(b'Please upload input table', rv.data)
 
         t = saliweb.test.TempDir()
         inf = os.path.join(t.tmpdir, 'inf.txt')
         with open(inf, 'w') as fh:
             fh.write("test")
 
-        rv = c.post('/job', data={'input_file':open(inf),
+        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
                                   'running_mode': 'garbage'})
         self.assertEqual(rv.status_code, 400)  # bad running mode
-        self.assertIn("Invalid value 'garbage' for running mode; should "
-                      "be one of 'training', 'trained'.".replace("'", "&#39;"),
+        self.assertIn(b"Invalid value 'garbage' for running mode; should "
+                      b"be one of 'training', 'trained'.".replace(b"'",
+                                                                  b"&#39;"),
                       rv.data)
 
-        rv = c.post('/job', data={'input_file':open(inf),
+        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'garbage'})
         self.assertEqual(rv.status_code, 400)  # bad filtering mode
-        self.assertIn("Invalid value 'garbage' for filtering mode; should "
-                      "be one of 'filtering', "
-                      "'no_filtering'.".replace("'", "&#39;"), rv.data)
+        self.assertIn(b"Invalid value 'garbage' for filtering mode; should "
+                      b"be one of 'filtering', "
+                      b"'no_filtering'.".replace(b"'", b"&#39;"), rv.data)
 
         # Successful submission (no email)
-        rv = c.post('/job', data={'input_file':open(inf),
+        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'filtering'})
         self.assertEqual(rv.status_code, 200)
-        r = re.compile('Your job .*has been submitted.*Results will be '
-                       'found at', re.MULTILINE | re.DOTALL)
+        r = re.compile(b'Your job .*has been submitted.*Results will be '
+                       b'found at', re.MULTILINE | re.DOTALL)
         self.assertRegexpMatches(rv.data, r)
 
         # Successful submission (with email)
-        rv = c.post('/job', data={'input_file':open(inf),
+        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'filtering',
                                   'email': 'test@test.com'})
         self.assertEqual(rv.status_code, 200)
-        r = re.compile('Your job .*has been submitted.*Results will be '
-                       'found at.*You will be notified at',
+        r = re.compile(b'Your job .*has been submitted.*Results will be '
+                       b'found at.*You will be notified at',
                        re.MULTILINE | re.DOTALL)
         self.assertRegexpMatches(rv.data, r)
 

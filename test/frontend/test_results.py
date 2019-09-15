@@ -25,8 +25,8 @@ class Tests(saliweb.test.TestCase):
             c = mist.app.test_client()
             for endpoint in ('job', 'results.cgi'):
                 rv = c.get('/%s/testjob2?passwd=%s' % (endpoint, j.passwd))
-                r = re.compile('Job.*testjob.*has completed.*Download.*'
-                               'MistOutput\.txt.*MiST output',
+                r = re.compile(b'Job.*testjob.*has completed.*Download.*'
+                               b'MistOutput\.txt.*MiST output',
                                re.MULTILINE | re.DOTALL)
                 self.assertRegexpMatches(rv.data, r)
 
@@ -36,10 +36,10 @@ class Tests(saliweb.test.TestCase):
             c = mist.app.test_client()
             rv = c.get('/job/testjob3?passwd=%s' % j.passwd)
             r = re.compile(
-                'Your MiST job.*testjob.*failed to produce any ranking.*'
-                'please see the.*#errors.*help page.*For more information, '
-                'you can.*framework\.log.*download the MiST file-check log.*'
-                'contact us', re.MULTILINE | re.DOTALL)
+                b'Your MiST job.*testjob.*failed to produce any ranking.*'
+                b'please see the.*#errors.*help page.*For more information, '
+                b'you can.*framework\.log.*download the MiST file-check log.*'
+                b'contact us', re.MULTILINE | re.DOTALL)
             self.assertRegexpMatches(rv.data, r)
 
 
