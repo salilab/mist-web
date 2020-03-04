@@ -4,10 +4,10 @@ import saliweb.test
 import saliweb.backend
 import os
 
-def make_input_file(contents):
+def make_input_file(contents, mode='w'):
     d = saliweb.test.TempDir()
     fname = os.path.join(d.tmpdir, 'input.txt')
-    with open(fname, 'w') as fh:
+    with open(fname, mode) as fh:
         fh.write(contents)
     return d, fname
 
@@ -24,6 +24,12 @@ Protein1\t#\t188\t#\t12\t4
         check, msg = mist.InputFileCheck().fileCheck(fname)
         self.assertFalse(check)
         self.assertEqual(msg, '\n\tLine 4 disagrees with #Exp (7)!\n')
+
+    def test_binary_file(self):
+        """Test binary file (invalid UTF-8)"""
+        d, fname = make_input_file(b"test\xee\x9dfile", mode='wb')
+        check, msg = mist.InputFileCheck().fileCheck(fname)
+        self.assertTrue(check)
 
     def test_bad_value(self):
         """Test file with bad values"""
