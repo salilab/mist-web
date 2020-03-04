@@ -13,7 +13,7 @@ class InputFileCheck:
 
     def fileCheck(self,fileName):
         """Check if input file is OK"""
-        with open(fileName,'rU') as data:
+        with open(fileName, 'r', encoding='latin1') as data:
             Lines = [i.strip().split('\t') for i in data.readlines()]
 
 
