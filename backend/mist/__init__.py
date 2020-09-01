@@ -66,7 +66,7 @@ class InputFileCheck:
 
 class Job(saliweb.backend.Job):
 
-    runnercls = saliweb.backend.SaliSGERunner
+    runnercls = saliweb.backend.WyntonSGERunner
 
 
     def run(self):
@@ -94,6 +94,7 @@ class Job(saliweb.backend.Job):
             paramsFile.close()
 
             script = """
+module load Sali
 module load mist
 MiST.py %s output %i %i
 
@@ -102,7 +103,7 @@ sleep 17
 """ % (inputFile, filteringM, trainingM)
 
             r = self.runnercls(script)
-            r.set_sge_options('-l o64=true -l diva1=1G')
+            r.set_sge_options('-l h_rt=24:00:00')
 
             return r
 
