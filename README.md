@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/salilab/mist-web.svg?branch=master)](https://travis-ci.org/salilab/mist-web)
+[![Build Status](https://travis-ci.com/salilab/mist-web.svg?branch=master)](https://travis-ci.com/salilab/mist-web)
 [![codecov](https://codecov.io/gh/salilab/mist-web/branch/master/graph/badge.svg)](https://codecov.io/gh/salilab/mist-web)
 [![Code Climate](https://codeclimate.com/github/salilab/mist-web/badges/gpa.svg)](https://codeclimate.com/github/salilab/mist-web)
 
