@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/salilab/mist-web/workflows/build/badge.svg?branch=master)](https://github.com/salilab/mist-web/actions?query=workflow%3Abuild)
-[![codecov](https://codecov.io/gh/salilab/mist-web/branch/master/graph/badge.svg)](https://codecov.io/gh/salilab/mist-web)
+[![Build Status](https://github.com/salilab/mist-web/workflows/build/badge.svg?branch=main)](https://github.com/salilab/mist-web/actions?query=workflow%3Abuild)
+[![codecov](https://codecov.io/gh/salilab/mist-web/branch/main/graph/badge.svg)](https://codecov.io/gh/salilab/mist-web)
 [![Code Climate](https://codeclimate.com/github/salilab/mist-web/badges/gpa.svg)](https://codeclimate.com/github/salilab/mist-web)
 
 This is the source code for [MiST](https://salilab.org/mist/), a web
