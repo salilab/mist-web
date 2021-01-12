@@ -19,8 +19,7 @@ class JobTests(saliweb.test.TestCase):
                 fh.write('Prey\t#\tLength\tBaitSims\tA\tA\tB|C\n')
                 fh.write('Protein1\t#\t188\t#\t12\t4\t12\n')
             cls = j._run_in_job_directory(j.run)
-            self.assert_(isinstance(cls, saliweb.backend.SGERunner),
-                         "SGERunner not returned")
+            self.assertIsInstance(cls, saliweb.backend.SGERunner)
 
     def test_run_not_ok(self):
         """Test run method with bad input file"""
@@ -34,8 +33,7 @@ class JobTests(saliweb.test.TestCase):
                 fh.write('Prey\t#\tLength\tBaitSims\tA\tA\tB|C\n')
                 fh.write('Protein1\t#\t188\t#\t12\t4\t12\n')
             cls = j._run_in_job_directory(j.run)
-            self.assert_(isinstance(cls, saliweb.backend.DoNothingRunner),
-                         "DoNothingRunner not returned")
+            self.assertIsInstance(cls, saliweb.backend.DoNothingRunner)
 
     def test_postprocess_ok(self):
         """Test postprocess method of OK run"""

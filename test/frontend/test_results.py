@@ -28,7 +28,7 @@ class Tests(saliweb.test.TestCase):
                 r = re.compile(b'Job.*testjob.*has completed.*Download.*'
                                b'MistOutput\\.txt.*MiST output',
                                re.MULTILINE | re.DOTALL)
-                self.assertRegexpMatches(rv.data, r)
+                self.assertRegex(rv.data, r)
 
     def test_failed_job(self):
         """Test display of failed job"""
@@ -40,7 +40,7 @@ class Tests(saliweb.test.TestCase):
                 b'please see the.*#errors.*help page.*For more information, '
                 b'you can.*framework\\.log.*download the MiST file-check log.*'
                 b'contact us', re.MULTILINE | re.DOTALL)
-            self.assertRegexpMatches(rv.data, r)
+            self.assertRegex(rv.data, r)
 
 
 if __name__ == '__main__':

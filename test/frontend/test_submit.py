@@ -50,7 +50,7 @@ class Tests(saliweb.test.TestCase):
             self.assertEqual(rv.status_code, 200)
             r = re.compile(b'Your job .*has been submitted.*Results will be '
                            b'found at', re.MULTILINE | re.DOTALL)
-            self.assertRegexpMatches(rv.data, r)
+            self.assertRegex(rv.data, r)
 
             # Successful submission (with email)
             rv = c.post('/job', data={'input_file': open(inf, 'rb'),
@@ -61,7 +61,7 @@ class Tests(saliweb.test.TestCase):
             r = re.compile(b'Your job .*has been submitted.*Results will be '
                            b'found at.*You will be notified at',
                            re.MULTILINE | re.DOTALL)
-            self.assertRegexpMatches(rv.data, r)
+            self.assertRegex(rv.data, r)
 
 
 if __name__ == '__main__':
