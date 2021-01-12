@@ -25,7 +25,7 @@ class Tests(saliweb.test.TestCase):
         with open(inf, 'w') as fh:
             fh.write("test")
 
-        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
+        rv = c.post('/job', data={'input_file': open(inf, 'rb'),
                                   'running_mode': 'garbage'})
         self.assertEqual(rv.status_code, 400)  # bad running mode
         self.assertIn(b"Invalid value 'garbage' for running mode; should "
@@ -33,7 +33,7 @@ class Tests(saliweb.test.TestCase):
                                                                   b"&#39;"),
                       rv.data)
 
-        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
+        rv = c.post('/job', data={'input_file': open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'garbage'})
         self.assertEqual(rv.status_code, 400)  # bad filtering mode
@@ -42,7 +42,7 @@ class Tests(saliweb.test.TestCase):
                       b"'no_filtering'.".replace(b"'", b"&#39;"), rv.data)
 
         # Successful submission (no email)
-        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
+        rv = c.post('/job', data={'input_file': open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'filtering'})
         self.assertEqual(rv.status_code, 200)
@@ -51,7 +51,7 @@ class Tests(saliweb.test.TestCase):
         self.assertRegexpMatches(rv.data, r)
 
         # Successful submission (with email)
-        rv = c.post('/job', data={'input_file':open(inf, 'rb'),
+        rv = c.post('/job', data={'input_file': open(inf, 'rb'),
                                   'running_mode': 'training',
                                   'filtering_mode': 'filtering',
                                   'email': 'test@test.com'})

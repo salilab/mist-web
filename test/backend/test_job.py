@@ -2,7 +2,7 @@ import unittest
 import mist
 import saliweb.test
 import saliweb.backend
-import os
+
 
 class JobTests(saliweb.test.TestCase):
     """Check custom Job class"""
@@ -21,6 +21,7 @@ class JobTests(saliweb.test.TestCase):
         cls = j._run_in_job_directory(j.run)
         self.assert_(isinstance(cls, saliweb.backend.SGERunner),
                      "SGERunner not returned")
+        del d
 
     def test_run_not_ok(self):
         """Test run method with bad input file"""
@@ -36,6 +37,7 @@ class JobTests(saliweb.test.TestCase):
         cls = j._run_in_job_directory(j.run)
         self.assert_(isinstance(cls, saliweb.backend.DoNothingRunner),
                      "DoNothingRunner not returned")
+        del d
 
     def test_postprocess_ok(self):
         """Test postprocess method of OK run"""
@@ -57,12 +59,15 @@ class JobTests(saliweb.test.TestCase):
 #Bait\tPrey\tReproducibility\tAbundance\tSpecificity\tMiST
 A\tB\ttestrep\ttestab\ttestsp\ttestmist
 """)
+        del d
 
     def test_postprocess_bad(self):
         """Test postprocess method of bad run"""
         j = self.make_test_job(mist.Job, 'RUNNING')
         d = saliweb.test.RunInDir(j.directory)
-        j.postprocess() # should do nothing
+        j.postprocess()  # should do nothing
+        del d
+
 
 if __name__ == '__main__':
     unittest.main()

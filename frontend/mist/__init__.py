@@ -5,11 +5,12 @@ from saliweb.frontend import get_completed_job, Parameter, FileParameter
 from . import submit_page
 
 
-parameters=[Parameter("name", "Job name", optional=True),
-            Parameter("running_mode", "either 'training' or 'trained'"),
-            Parameter("filtering_mode",
-                "Singleton filtering; either 'filtering' or 'no_filtering'"),
-            FileParameter("input_file", "File containing interaction data")]
+parameters = [Parameter("name", "Job name", optional=True),
+              Parameter("running_mode", "either 'training' or 'trained'"),
+              Parameter(
+                  "filtering_mode",
+                  "Singleton filtering; either 'filtering' or 'no_filtering'"),
+              FileParameter("input_file", "File containing interaction data")]
 app = saliweb.frontend.make_application(__name__, parameters)
 
 

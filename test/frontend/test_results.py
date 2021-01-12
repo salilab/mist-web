@@ -26,7 +26,7 @@ class Tests(saliweb.test.TestCase):
             for endpoint in ('job', 'results.cgi'):
                 rv = c.get('/%s/testjob2?passwd=%s' % (endpoint, j.passwd))
                 r = re.compile(b'Job.*testjob.*has completed.*Download.*'
-                               b'MistOutput\.txt.*MiST output',
+                               b'MistOutput\\.txt.*MiST output',
                                re.MULTILINE | re.DOTALL)
                 self.assertRegexpMatches(rv.data, r)
 
@@ -38,7 +38,7 @@ class Tests(saliweb.test.TestCase):
             r = re.compile(
                 b'Your MiST job.*testjob.*failed to produce any ranking.*'
                 b'please see the.*#errors.*help page.*For more information, '
-                b'you can.*framework\.log.*download the MiST file-check log.*'
+                b'you can.*framework\\.log.*download the MiST file-check log.*'
                 b'contact us', re.MULTILINE | re.DOTALL)
             self.assertRegexpMatches(rv.data, r)
 

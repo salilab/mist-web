@@ -4,12 +4,14 @@ import saliweb.test
 import saliweb.backend
 import os
 
+
 def make_input_file(contents, mode='w'):
     d = saliweb.test.TempDir()
     fname = os.path.join(d.tmpdir, 'input.txt')
     with open(fname, mode) as fh:
         fh.write(contents)
     return d, fname
+
 
 class Tests(saliweb.test.TestCase):
     """Check InputFileCheck class"""
@@ -66,6 +68,7 @@ Protein2\t#\t188\t#\t12\t4\t27
         check, msg = mist.InputFileCheck().fileCheck(fname)
         self.assertFalse(check)
         self.assertEqual(msg, '\n\tPrey Protein1 repeated!\n')
+
 
 if __name__ == '__main__':
     unittest.main()
