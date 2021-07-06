@@ -2,6 +2,7 @@ import unittest
 import mist
 import saliweb.test
 import saliweb.backend
+import tempfile
 import os
 
 
@@ -17,7 +18,7 @@ class Tests(saliweb.test.TestCase):
 
     def test_bad_length(self):
         """Test file with bad line lengths"""
-        with saliweb.test.temporary_directory() as d:
+        with tempfile.TemporaryDirectory() as d:
             fname = make_input_file(d, """#\t#\t#\tExps\tA1\tA2\tB1
 #\t#\t#\tBaits\tA\tB\tC
 Prey\t#\tLength\tBaitSims\tA\tA\tB|C
@@ -29,14 +30,14 @@ Protein1\t#\t188\t#\t12\t4
 
     def test_binary_file(self):
         """Test binary file (invalid UTF-8)"""
-        with saliweb.test.temporary_directory() as d:
+        with tempfile.TemporaryDirectory() as d:
             fname = make_input_file(d, b"test\xee\x9dfile", mode='wb')
             check, msg = mist.InputFileCheck().fileCheck(fname)
             self.assertTrue(check)
 
     def test_bad_value(self):
         """Test file with bad values"""
-        with saliweb.test.temporary_directory() as d:
+        with tempfile.TemporaryDirectory() as d:
             fname = make_input_file(d, """#\t#\t#\tExps\tA1\tA2\tB1
 #\t#\t#\tBaits\tA\tB\tC
 Prey\t#\tLength\tBaitSims\tA\tA\tB|C
@@ -50,7 +51,7 @@ Protein1\t#\t188\t#\tFOO\tBAR\t27
 
     def test_repeated_experiment(self):
         """Test file with repeated experiment"""
-        with saliweb.test.temporary_directory() as d:
+        with tempfile.TemporaryDirectory() as d:
             fname = make_input_file(d, """#\t#\t#\tExps\tA1\tA2\tA1
 #\t#\t#\tBaits\tA\tB\tC
 Prey\t#\tLength\tBaitSims\tA\tA\tB|C
@@ -62,7 +63,7 @@ Protein1\t#\t188\t#\t12\t4\t27
 
     def test_repeated_prey(self):
         """Test file with repeated prey"""
-        with saliweb.test.temporary_directory() as d:
+        with tempfile.TemporaryDirectory() as d:
             fname = make_input_file(d, """#\t#\t#\tExps\tA1\tA2\tB1
 #\t#\t#\tBaits\tA\tB\tC
 Prey\t#\tLength\tBaitSims\tA\tA\tB|C
