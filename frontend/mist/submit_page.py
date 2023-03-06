@@ -1,4 +1,5 @@
 from flask import request
+import os
 import saliweb.frontend
 
 
@@ -23,7 +24,11 @@ def handle_new_job():
         fh.write(filtering_mode + '\n')
 
     # write the input
-    input_file.save(job.get_path('input.txt'))
+    full_fname = job.get_path('input.txt')
+    input_file.save(full_fname)
+    if os.stat(full_fname).st_size == 0:
+        raise saliweb.frontend.InputValidationError(
+            "You have uploaded an empty input table.")
 
     job.submit(email)
 

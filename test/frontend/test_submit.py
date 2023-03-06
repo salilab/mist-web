@@ -25,6 +25,15 @@ class Tests(saliweb.test.TestCase):
 
             inf = os.path.join(tmpdir, 'inf.txt')
             with open(inf, 'w') as fh:
+                pass
+
+            rv = c.post('/job', data={'input_file': open(inf, 'rb'),
+                                      'running_mode': 'training',
+                                      'filtering_mode': 'filtering'})
+            self.assertEqual(rv.status_code, 400)  # empty input table
+            self.assertIn(b"You have uploaded an empty input table.", rv.data)
+
+            with open(inf, 'w') as fh:
                 fh.write("test")
 
             rv = c.post('/job', data={'input_file': open(inf, 'rb'),
